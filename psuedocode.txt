@@ -1,0 +1,18 @@
+1. Object to contain objects containing word, picture, etc
+
+2. onKeyUp function to contain main game logic
+
+3. main game logic
+
+4. <p>Press any key to get started</p>
+
+5. var wins
+
+6. var currentWord
+
+7. var numberOfGuessesRemaining
+
+8. var [letters already guessed]
+
+9. re-typing a letter already guessed should do NOTHING
+
