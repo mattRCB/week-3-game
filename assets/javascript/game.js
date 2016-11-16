@@ -18,34 +18,69 @@ var gameObject = {
 */
 
 var words = ["federer", "becker", "agassi"]
+var wordsDiminished = words;
 var currentWord = [];
 var currentBlanks = [];
 var guessesRemaining = 8;
 var lettersGuessed = [];
+var wins = 0;
 
+var selectWordAtRandom = function() {
+	console.log(wordsDiminished);
+	var randomIndex = Math.floor(Math.random() * wordsDiminished.length);
+	/* Choose random string from words array; split it into currentWord array */
+	currentWord = wordsDiminished[randomIndex].split("");
+	console.log(randomIndex);
+	console.log(currentWord);
+	/* Remove the selected word from the array of remaining words */
+	wordsDiminished.splice(randomIndex, 1);
+	console.log(wordsDiminished);	
+};
 
-/* Choose random string from words array; split it into currentWord array */
-currentWord = words[Math.floor(Math.random() * words.length)].split("");
-/* STILL NEED TO remove the value the user has selected and then return a random element from the diminished array. PROBABLY SHOULD MAKE THIS A FUNCTION TO BE CALLED HERE AND FROM END OF FLOW TO RESET GAME. */
+var drawBlanks = function() {
+	/* Set currentBlanks based on currentWord; Draw blanks on screen */
+	currentBlanks = [];
+	for (var i = 0; i < currentWord.length; i++) {
+		currentBlanks.push("_ ");
+		document.getElementById("displayBlanks").innerHTML = currentBlanks.join("");
+	}
+	// console.log(currentBlanks);
+	// console.log(currentWord);
+};
 
+var displayGuessesRemaining = function() {
+	document.getElementById("displayRemaining").innerHTML = guessesRemaining;
+};
 
-/* Set currentBlanks based on currentWord; Draw blanks on screen */
-for (var i = 0; i < currentWord.length; i++) {
-	currentBlanks.push("_ ");
-	document.getElementById("displayBlanks").innerHTML = currentBlanks.join("");
-}
-// console.log(currentBlanks);
-// console.log(currentWord);
+var displayGuessed = function() {
+	document.getElementById("displayGuessed").innerHTML = lettersGuessed;
+};
 
+var resetGame = function() {
+	if (wordsDiminished == []) {
+		wordsDiminished = words;
+		wins = 0;
+	}
+	selectWordAtRandom();
+	guessesRemaining = 8;
+	displayGuessesRemaining();
+	lettersGuessed = [];
+	displayGuessed();
+	drawBlanks();
+};
+
+/* Initiate game by choosing a word at random */
+selectWordAtRandom();
+
+drawBlanks();
 
 /* Write initial # of guesses remaining to the screen */
-document.getElementById("displayRemaining").innerHTML = guessesRemaining;
-
+displayGuessesRemaining();
 
 
 document.onkeyup = function(event) {
 	var key = String.fromCharCode(event.keyCode).toLowerCase();
-	console.log(key);
+	console.log(key);	
 	var foundTheLetter = false;
 	
 	/* Iterate thru currentWord array checking for letter-key pressed */
@@ -58,23 +93,26 @@ document.onkeyup = function(event) {
 		}
 	}
 
-	if (foundTheLetter == false) {
+	if ((foundTheLetter == false)  && (lettersGuessed.indexOf(key) < 0)){			
 		guessesRemaining--;
-		document.getElementById("displayRemaining").innerHTML = guessesRemaining;
+		displayGuessesRemaining();
 		lettersGuessed.push(key);
-		document.getElementById("displayGuessed").innerHTML = lettersGuessed;
+		displayGuessed();
 		/* Check if guessesRemaining is 0; if so, end round & reset for new round. */
-
+		if (guessesRemaining == 0) {
+			resetGame();
+		}
 	} else /* THE LETTER-GUESSED WAS CORRECT */ {
 		/*Add the letter to the on-screen blanks/letters display */
 		document.getElementById("displayBlanks").innerHTML = currentBlanks.join("");
 		/* Check if all blanks are filled-in; if so: Increment Wins; Display picture, etc.; Reset for new round. */
-
+		if (currentBlanks.indexOf("_ ") < 0) {
+			wins++;
+			document.getElementById("displayWins").innerHTML = wins;
+			resetGame();
+		}
 	}
 					
-					
-
-
 };
 
 
