@@ -2,35 +2,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hangman</title>
-
-<!--	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css"> -->
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Hangman</title>
+     <!-- bootstrap cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
 
 
 </head>
 <body>
-	<h1>Hangman: Pro Tennis Challenge</h1>
-	<h2>Press any key to get started.</h2>
-	<div id="wins">
-		<h3>Wins</h3>
-		<p id="displayWins"></p>		
-	</div>
-	<div id="word">
-		<h3>Current Word</h3>
-		<p id="displayBlanks"></p>
-	</div>
-	<div id="guessesRemaining">
-		<h3>Guesses Remaining</h3>
-		<p id="displayRemaining"></p>
-	</div>
-	<div id="lettersGuessed">
-		<h3>Letters Already Guessed</h3>
-		<p id="displayGuessed"></p>
-	</div>
+	<div class="container">	
+		<div id="wrapper" class="col-md-12">
+
+			<div id="infoDisplay" class=".col-xs-12 .col-sm-6 .col-md-6 col-lg-6">
+				<p>Guess the letters to spell the names of popular javascript-based technologies. </p>
+			</div>
 
 
+			<div id="gameDisplay" class=".col-xs-12 .col-sm-6 .col-md-6 col-lg-6">
+				<h1>Hangman: Javascript Challenge</h1>
+				<h2>Press any key to get started.</h2>
+				<div id="wins">
+					<h3>Wins</h3>
+					<p id="displayWins"></p>		
+				</div>
+				<div id="word">
+					<h3>Current Word</h3>
+					<p id="displayBlanks"></p>
+				</div>
+				<div id="guessesRemaining">
+					<h3>Guesses Remaining</h3>
+					<p id="displayRemaining"></p>
+				</div>
+				<div id="lettersGuessed">
+					<h3>Letters Already Guessed</h3>
+					<p id="displayGuessed"></p>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
 

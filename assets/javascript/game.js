@@ -1,37 +1,43 @@
-/*
-var randomSelector = ["federer", "becker", "agassi"]
-
 var gameObject = {
-	federer : {
-		word : "roger federer",
-		img : "./assets/images/federer.jpg"
+	angular : {
+		technology : "Angular.js",
+		desc : "Google's javaScript-based framework for building single-page, desktop-style, browser-based web applications. Can be used in conjunction with Apache Cordova to build cross-platform mobile apps, too. In HTML, Angular tags start with \"ng-\", for example, <div ng-app=\"\">.",
+		img : "./assets/images/angularjs.png"
 	},
-	becker : {
-		word : "boris becker",
-		img : "./assets/images/becker.jpg"
-	}
-	agassi : {
-		word : "andre agassi",
-		img : "./assets/images/agassi.jpg"
-	}	
+	node : {
+		technology : "Node.js",
+		desc : "An open-source, back-end, runtime environment which is event-driven for handling asynchronous connections. Allows developers to cobble-together custom web servers from a collection of modules which provide core functionalities. Similar to PHP, except unlike PHP, Node is \"non-blocking\", i.e. capable of running commands in parallel; and offers \"callbacks\" to inform the browser when a process completes or fails. Uses Google's V8 engine to interpret javaScript. Has a package manager called NPM which let's programmers contribute to/take from the open-source community's collection of node libraries.",
+		img : "./assets/images/nodejs.png"
+	},
+	handlebars : {
+		technology : "Handlebars",
+		desc : 'A templating engine which can be run along-side a Node web-server. Handlebars can produce data-free HTML-templates with handlebar expressions as placeholders. When the web-server provides the data dynamically, the final html is rendered and sent to the browser with the handlebar expressions replaced with actual data. Thus html structures remain seperate from data and scripting structures until they are served to the client.',
+		img : "./assets/images/handlebars.png"
+	},
+	express : {
+		technology : "Express.js",
+		desc : 'Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. With a myriad of HTTP utility methods and middleware at your disposal, creating a robust API is quick and easy. Express provides a thin layer of fundamental web application features, without obscuring Node.js features that you know and love.',
+		img : "./assets/images/express.png"
+	},
 }
-*/
 
-var words = ["federer", "becker", "agassi", "wawrinka"]
+
+var words = ["angular", "node", "handlebars", "express"]
 var wordsDiminished = words.slice();
+var currentStr = "";
 var currentWord = [];
 var currentBlanks = [];
 var guessesRemaining = 8;
 var lettersGuessed = [];
 var wins = 0;
-
 var gameCompletionCounter = 0;
 
 var selectWordAtRandom = function() {
 	console.log(wordsDiminished);
 	var randomIndex = Math.floor(Math.random() * wordsDiminished.length);
 	/* Choose random string from words array; split it into currentWord array */
-	currentWord = wordsDiminished[randomIndex].split("");
+	currentStr = wordsDiminished[randomIndex];
+	currentWord = currentStr.split("");
 	console.log(randomIndex);
 	console.log(currentWord);
 	/* Remove the selected word from the array of remaining words */
@@ -51,8 +57,6 @@ var drawBlanks = function() {
 		currentBlanks.push("_ ");
 		document.getElementById("displayBlanks").innerHTML = currentBlanks.join("");
 	}
-	// console.log(currentBlanks);
-	// console.log(currentWord);
 };
 
 var displayGuessesRemaining = function() {
@@ -81,8 +85,17 @@ var resetGame = function() {
 		alert("CONGRATULATIONS! You've completed the entire game, and you won " + wins + " out of " + words.length + " rounds.");
 		wins = 0;
 		displayWins();
+		gameCompletionCounter = 0;
 	}
 };
+
+var displayObjectSet = function(curStr) {
+	console.log("Is it fillingin current string: " + curStr);
+	document.getElementById("infoDisplay").innerHTML = 
+		"<img src=" + gameObject[curStr].img + "><p>" + gameObject[curStr].desc + "</p>";
+}
+
+
 
 /* Initiate game by choosing a word at random */
 selectWordAtRandom();
@@ -91,6 +104,7 @@ drawBlanks();
 
 /* Write initial # of guesses remaining to the screen */
 displayGuessesRemaining();
+
 
 
 document.onkeyup = function(event) {
@@ -129,6 +143,8 @@ document.onkeyup = function(event) {
 			wins++;
 			displayWins();
 			console.log(wins);
+			/* DISPLAY ALL INFO FROM currentWord OBJECT */
+			displayObjectSet(currentStr);
 			resetGame();
 		}
 	}
