@@ -17,13 +17,15 @@ var gameObject = {
 }
 */
 
-var words = ["federer", "becker", "agassi"]
-var wordsDiminished = words;
+var words = ["federer", "becker", "agassi", "wawrinka"]
+var wordsDiminished = words.slice();
 var currentWord = [];
 var currentBlanks = [];
 var guessesRemaining = 8;
 var lettersGuessed = [];
 var wins = 0;
+
+var gameCompletionCounter = 0;
 
 var selectWordAtRandom = function() {
 	console.log(wordsDiminished);
@@ -33,8 +35,13 @@ var selectWordAtRandom = function() {
 	console.log(randomIndex);
 	console.log(currentWord);
 	/* Remove the selected word from the array of remaining words */
-	wordsDiminished.splice(randomIndex, 1);
-	console.log(wordsDiminished);	
+	if (wordsDiminished.length > 1) {	
+		wordsDiminished.splice(randomIndex, 1);
+		console.log(wordsDiminished);
+	} else {
+		wordsDiminished = words.slice();
+		console.log(wordsDiminished);
+	}
 };
 
 var drawBlanks = function() {
@@ -56,17 +63,25 @@ var displayGuessed = function() {
 	document.getElementById("displayGuessed").innerHTML = lettersGuessed;
 };
 
+var displayWins = function() {
+	document.getElementById("displayWins").innerHTML = wins;
+};
+
 var resetGame = function() {
-	if (wordsDiminished == []) {
-		wordsDiminished = words;
-		wins = 0;
-	}
+	gameCompletionCounter++;
 	selectWordAtRandom();
 	guessesRemaining = 8;
 	displayGuessesRemaining();
 	lettersGuessed = [];
 	displayGuessed();
 	drawBlanks();
+	displayWins();
+	console.log("game: " + gameCompletionCounter);
+	if (gameCompletionCounter == words.length) {		
+		alert("CONGRATULATIONS! You've completed the entire game, and you won " + wins + " out of " + words.length + " rounds.");
+		wins = 0;
+		displayWins();
+	}
 };
 
 /* Initiate game by choosing a word at random */
@@ -80,7 +95,9 @@ displayGuessesRemaining();
 
 document.onkeyup = function(event) {
 	var key = String.fromCharCode(event.keyCode).toLowerCase();
-	console.log(key);	
+	console.log(key);
+	console.log("words is: " + words);
+	console.log("wordsDiminished is: " + wordsDiminished);
 	var foundTheLetter = false;
 	
 	/* Iterate thru currentWord array checking for letter-key pressed */
@@ -93,6 +110,7 @@ document.onkeyup = function(event) {
 		}
 	}
 
+	/* If the guessed-letter was incorrect AND it wasn't already guessed, then decrease guesses-remaining and include the letter in the list of incorrect guesses */
 	if ((foundTheLetter == false)  && (lettersGuessed.indexOf(key) < 0)){			
 		guessesRemaining--;
 		displayGuessesRemaining();
@@ -103,12 +121,14 @@ document.onkeyup = function(event) {
 			resetGame();
 		}
 	} else /* THE LETTER-GUESSED WAS CORRECT */ {
-		/*Add the letter to the on-screen blanks/letters display */
+		/*Add the letter to the on-screen blanks/letters, i.e. display of the word*/
 		document.getElementById("displayBlanks").innerHTML = currentBlanks.join("");
+		console.log(key);
 		/* Check if all blanks are filled-in; if so: Increment Wins; Display picture, etc.; Reset for new round. */
 		if (currentBlanks.indexOf("_ ") < 0) {
 			wins++;
-			document.getElementById("displayWins").innerHTML = wins;
+			displayWins();
+			console.log(wins);
 			resetGame();
 		}
 	}
