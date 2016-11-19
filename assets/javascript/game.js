@@ -2,22 +2,26 @@ var gameObject = {
 	angular : {
 		technology : "Angular.js",
 		desc : "Google's javaScript-based framework for building single-page, desktop-style, browser-based web applications. Can be used in conjunction with Apache Cordova to build cross-platform mobile apps, too. In HTML, Angular tags start with \"ng-\", for example, <div ng-app=\"\">.",
-		img : "./assets/images/angularjs.png"
+		img : "./assets/images/angularjs.png",
+		hint : "A popular framework from google."
 	},
 	node : {
 		technology : "Node.js",
 		desc : "An open-source, back-end, runtime environment which is event-driven for handling asynchronous connections. Allows developers to cobble-together custom web servers from a collection of modules which provide core functionalities. Similar to PHP, except unlike PHP, Node is \"non-blocking\", i.e. capable of running commands in parallel; and offers \"callbacks\" to inform the browser when a process completes or fails. Uses Google's V8 engine to interpret javaScript. Has a package manager called NPM which let's programmers contribute to/take from the open-source community's collection of node libraries.",
-		img : "./assets/images/nodejs.png"
+		img : "./assets/images/nodejs.png",
+		hint : "You probably can't make a server with javascript without this."
 	},
 	handlebars : {
 		technology : "Handlebars",
 		desc : 'A templating engine which can be run along-side a Node web-server. Handlebars can produce data-free HTML-templates with handlebar expressions as placeholders. When the web-server provides the data dynamically, the final html is rendered and sent to the browser with the handlebar expressions replaced with actual data. Thus html structures remain seperate from data and scripting structures until they are served to the client.',
-		img : "./assets/images/handlebars.png"
+		img : "./assets/images/handlebars.png",
+		hint : "Why make your html templates by hand, when you can grab a hold of these."
 	},
 	express : {
 		technology : "Express.js",
 		desc : 'Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. With a myriad of HTTP utility methods and middleware at your disposal, creating a robust API is quick and easy. Express provides a thin layer of fundamental web application features, without obscuring Node.js features that you know and love.',
-		img : "./assets/images/express.png"
+		img : "./assets/images/express.png",
+		hint : "Sure, django nice if you like python, but this tidy web app framework is for javascript."
 	},
 }
 
@@ -48,6 +52,7 @@ var selectWordAtRandom = function() {
 		wordsDiminished = words.slice();
 		console.log(wordsDiminished);
 	}
+	showHint(currentStr);
 };
 
 var drawBlanks = function() {
@@ -93,6 +98,10 @@ var displayObjectSet = function(curStr) {
 	console.log("Is it fillingin current string: " + curStr);
 	document.getElementById("infoDisplay").innerHTML = 
 		"<img src=" + gameObject[curStr].img + "><p>" + gameObject[curStr].desc + "</p>";
+}
+
+var showHint = function(curStr) {
+	document.getElementById("hint").innerHTML = gameObject[curStr].hint;
 }
 
 

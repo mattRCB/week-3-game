@@ -1,17 +1,48 @@
+
+
+.container {
+    margin: auto;
+    width: 75%;
+    border: 3px solid #A9A9A9;
+    padding: 10px;
+    height: 480px;
+
+
+
+}
+
 #infoDisplay {
-	border: 2px blue solid;
+/*	border: 2px blue solid; */
+	width: 49.5%;
+	margin: 0;
+	float: left;
+
 }
 
 #infoDisplay img {
 	width: 100%;
 }
 
+#infoDisplay p {
+	margin: 32px;
+}
+
 #gameDisplay {
-	border: 2px red solid;
+/*	border: 2px red solid; */
+	width: 49.5%;
+	margin: 0;
+	float: right;
+	border-left: 3px solid #A9A9A9;
+
+
+}
+
+#gameDisplay * {
+	margin-left: 32px;
 }
 
 h1 {
-	color: red;
+	text-align: center;
 }
 
 body {
