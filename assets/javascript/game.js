@@ -1,7 +1,7 @@
 var gameObject = {
 	angular : {
 		technology : "Angular.js",
-		desc : "Google's javaScript-based framework for building single-page, desktop-style, browser-based web applications. Can be used in conjunction with Apache Cordova to build cross-platform mobile apps, too. In HTML, Angular tags start with \"ng-\", for example, \<div ng-app=\"\"\>.",
+		desc : 'Google\'s javaScript-based framework for building single-page, desktop-style, browser-based web applications. Can be used in conjunction with Apache Cordova to build cross-platform mobile apps, too. In HTML, Angular tags start with "ng-", for example, &lt;div ng-app=""&gt;.',
 		img : "./assets/images/angularjs.png",
 		hint : "A popular framework from google."
 	},
