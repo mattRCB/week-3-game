@@ -92,7 +92,7 @@ p {
 
 /* MOBILE SUPPORT */
 #showKeyboard {
-	display: none;
+	display: visible;
 }
 
 
