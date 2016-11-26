@@ -35,9 +35,9 @@ var gameObject = {
 function isTouchDevice() {
     return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
 }
-if (isTouchDevice() === true) {
-    document.getElementById("showKeyboard").setAttribute("style", "display: visible;");
-    alert("this is a touchscreen device.");
+if (isTouchDevice() === false) {
+ 	document.getElementById("showKeyboard").style.display = "none";
+    alert("this is not a touchscreen device.");
 }
 
 var words = ["angular", "node", "handlebars", "express", "hapi"]

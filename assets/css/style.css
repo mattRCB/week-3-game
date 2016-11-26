@@ -91,7 +91,7 @@ p {
 }
 
 #showKeyboard {
-	display: none;
+	display: visible;
 }
 
 
