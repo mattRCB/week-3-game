@@ -21,12 +21,27 @@ var gameObject = {
 		technology : "Express.js",
 		desc : 'Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. With a myriad of HTTP utility methods and middleware at your disposal, creating a robust API is quick and easy. Express provides a thin layer of fundamental web application features, without obscuring Node.js features that you know and love.',
 		img : "./assets/images/express.png",
-		hint : "Sure, django nice if you like python, but this tidy web app framework is for javascript."
+		hint : "Sure, django's nice if you like python, but this tidy web app framework is for javascript."
 	},
+	hapi : {
+		technology : "Hapi.js",
+		desc : "Hapi is a framework for creating Node servers to run RESTful-APIs and MVC-style applications. Similar to django for python, and rails for ruby, Hapi can be used to create a ready-made generic server with capabilities including user-authentication, MVC routing, input validation, cookies and caching. Customized web applications are prototyped rapidly by re-configuring the pre-built infrastructure. Hapi is employed best by larger organizations and development teams building complex applications, as the ready-to-use infastructure encourages developers to adhere to Hapi conventions. DIY'ers and smaller teams building projects of narrow-scope may find the pre-made structure counterproductive.",
+		img : "./assets/images/hapi.png",
+		hint : "Teams will be elated how quickly apps build-out on this framework."
+	}
 }
 
-
-var words = ["angular", "node", "handlebars", "express"]
+/*  FUNCTION TO DETERMINE IF CLIENT IS A TOUCHSCREEN DEVICE 
+function isTouchDevice() {
+    return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
+}
+if (isTouchDevice() === true) {
+    alert('Touch Device'); //your logic for touch device here
+} else {
+    alert('Not a Touch Device'); //your logic for non touch device here
+}
+*/
+var words = ["angular", "node", "handlebars", "express", "hapi"]
 var wordsDiminished = words.slice();
 var currentStr = "";
 var currentWord = [];
@@ -159,6 +174,10 @@ document.onkeyup = function(event) {
 	}
 					
 };
+
+
+
+
 
 
 
