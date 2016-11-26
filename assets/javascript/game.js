@@ -31,16 +31,15 @@ var gameObject = {
 	}
 }
 
-/*  FUNCTION TO DETERMINE IF CLIENT IS A TOUCHSCREEN DEVICE 
+/*  FUNCTION TO DETERMINE IF CLIENT IS A TOUCHSCREEN DEVICE */
 function isTouchDevice() {
     return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
 }
 if (isTouchDevice() === true) {
-    alert('Touch Device'); //your logic for touch device here
-} else {
-    alert('Not a Touch Device'); //your logic for non touch device here
+    document.getElementById("showKeyboard").setAttribute("style", "display: visible");
+    alert("this is a touchscreen device.");
 }
-*/
+
 var words = ["angular", "node", "handlebars", "express", "hapi"]
 var wordsDiminished = words.slice();
 var currentStr = "";
@@ -128,7 +127,6 @@ drawBlanks();
 
 /* Write initial # of guesses remaining to the screen */
 displayGuessesRemaining();
-
 
 
 document.onkeyup = function(event) {
