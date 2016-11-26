@@ -90,11 +90,12 @@ p {
 	margin-right: 18px;
 }
 
+/* MOBILE SUPPORT */
 #showKeyboard {
-	display: visible;
+	display: none;
 }
 
 
-/* MOBILE SUPPORT */
+
 
 

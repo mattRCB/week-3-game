@@ -35,9 +35,12 @@ var gameObject = {
 function isTouchDevice() {
     return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
 }
-if (isTouchDevice() === false) {
- 	document.getElementById("showKeyboard").style.display = "none";
-    alert("this is not a touchscreen device.");
+/*  On mobile devices, show a text input field to open virtual keyboard */
+if (isTouchDevice() === true) {
+ 	document.getElementById("showKeyboard").style.display = "visible";
+    console.log("this is a touchscreen device.");
+} else {
+	console.log("This is not a touchscreen device");
 }
 
 var words = ["angular", "node", "handlebars", "express", "hapi"]
