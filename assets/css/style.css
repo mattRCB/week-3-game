@@ -27,8 +27,18 @@ p {
 	font-size: 18px;
 }
 
-#displayBlanks {
+#displayBlanks, #displayRemaining, #displayGuessed, #displayWins {
 	font-size: 36px;
+}
+#displayGuessed {
+	letter-spacing: 2px;
+	height: 36px; 
+}
+
+#displayBlanks {
+	padding-top: 48px;
+	letter-spacing: 2px;
+	font-weight: bold;
 }
 
 #guessesRemaining {
@@ -62,6 +72,9 @@ p {
 	border-radius: 4px;
 	overflow: scroll;
 	margin-right: 2px;
+	text-align: justify;
+	text-justify: newspaper;
+	line-height: 1.25;
 }
 
 #infoDisplay img {
@@ -69,7 +82,7 @@ p {
 }
 
 #infoDisplay p {
-	margin: 32px;
+	margin: 18px 24px 0px 24px;
 }
 
 #gameDisplay {
@@ -85,7 +98,9 @@ p {
 }
 
 #hint {
-	text-align: left;
+	text-align: justify;
+	text-justify: newspaper;
+	line-height: 1.1;
 	margin-left: 18px;
 	margin-right: 18px;
 }

@@ -28,6 +28,12 @@ var gameObject = {
 		desc : "Hapi is a framework for creating Node servers to run RESTful-APIs and MVC-style applications. Similar to django for python, and rails for ruby, Hapi can be used to create a ready-made generic server with capabilities including user-authentication, MVC routing, input validation, cookies and caching. Customized web applications are prototyped rapidly by re-configuring the pre-built infrastructure. Hapi is employed best by larger organizations and development teams building complex applications, as the ready-to-use infastructure encourages developers to adhere to Hapi conventions. DIY'ers and smaller teams building projects of narrow-scope may find the pre-made structure counterproductive.",
 		img : "./assets/images/hapi.png",
 		hint : "Teams will be elated how quickly apps build-out on this framework."
+	},
+	backbone : {
+		technology : "Backbone.js",
+		desc : "Backbone.js is a lightweight, server-side, Model-View javaScript library that provides a RESTful JSON interface. Useful for developing single-page web-apps and capable of keeping data synchronized across numerous, concurrent clients and the server, backbone.js is a great choice for developers seeking to leverage a powerful MVC library without becoming entangled with a lot of generic, pre-built infastructure.",
+		img : "./assets/images/backbone.png",
+		hint : "Developers with a strong spine who feel encumbered by pre-built server frameworks may prefer the freedom offered by this backend library."
 	}
 }
 
@@ -43,7 +49,7 @@ if (isTouchDevice() === false) {
 	console.log("This is a touchscreen device");
 }
 
-var words = ["angular", "node", "handlebars", "express", "hapi"]
+var words = ["angular", "node", "handlebars", "express", "hapi", "backbone"]
 var wordsDiminished = words.slice();
 var currentStr = "";
 var currentWord = [];
@@ -150,14 +156,17 @@ document.onkeyup = function(event) {
 	}
 
 	/* If the guessed-letter was incorrect AND it wasn't already guessed, then decrease guesses-remaining and include the letter in the list of incorrect guesses */
-	if ((foundTheLetter == false)  && (lettersGuessed.indexOf(key) < 0)){			
+	if ((foundTheLetter == false)  && (lettersGuessed.indexOf(" " + key) < 0)){			
 		guessesRemaining--;
 		displayGuessesRemaining();
-		lettersGuessed.push(key);
+		lettersGuessed.push(" " + key);
 		displayGuessed();
 		/* Check if guessesRemaining is 0; if so, end round & reset for new round. */
-		if (guessesRemaining == 0) {
+		if (guessesRemaining == 0) {			
+			alert('Sorry, you didn\'t win this round. The word we were looking for was "' + currentStr + '".');
+			displayObjectSet(currentStr);
 			resetGame();
+
 		}
 	} else /* THE LETTER-GUESSED WAS CORRECT */ {
 		/*Add the letter to the on-screen blanks/letters, i.e. display of the word*/
