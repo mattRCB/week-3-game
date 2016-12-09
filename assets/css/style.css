@@ -112,7 +112,7 @@ p {
 
 #virtual-textfield {
 	z-index: -1;
-	display: none;
+	opacity: 0;
 }
 
 
