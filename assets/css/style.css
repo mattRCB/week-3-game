@@ -110,7 +110,9 @@ p {
 	display: visible;
 }
 
-
+#virtual-textfield {
+	z-index: -1;
+}
 
 
 

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -29,7 +28,11 @@
 				<div id="gameDisplay">
 					
 					<h2>Press any key to get started.</h2>
-					<input id="showKeyboard" type="text" value="Tap to show keyboard">
+					<!-- Touchscreen support -->
+					<button id="showKeyboard" onclick="goToTextField()">
+						Show Keyboard
+					</button>
+					<input id="virtual-textfield" type="text">
 					
 					<div id="word">
 						<h3 id="hint">Current Word</h3>

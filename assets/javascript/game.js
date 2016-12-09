@@ -27,7 +27,7 @@ var gameObject = {
 		technology : "Hapi.js",
 		desc : "Hapi is a framework for creating Node servers to run RESTful-APIs and MVC-style applications. Similar to django for python, and rails for ruby, Hapi can be used to create a ready-made generic server with capabilities including user-authentication, MVC routing, input validation, cookies and caching. Customized web applications are prototyped rapidly by re-configuring the pre-built infrastructure. Hapi is employed best by larger organizations and development teams building complex applications, as the ready-to-use infastructure encourages developers to adhere to Hapi conventions. DIY'ers and smaller teams building projects of narrow-scope may find the pre-made structure counterproductive.",
 		img : "./assets/images/hapi.png",
-		hint : "Teams will be elated how quickly apps build-out on this framework."
+		hint : "Teams will be <i>elated</i> how quickly apps build-out on this framework."
 	},
 	backbone : {
 		technology : "Backbone.js",
@@ -41,12 +41,17 @@ var gameObject = {
 function isTouchDevice() {
     return true == ("ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch);
 }
+
 /*  On mobile devices, show a text input field to open virtual keyboard */
 if (isTouchDevice() === false) {
  	document.getElementById("showKeyboard").style.display = "none";
     console.log("this is not a touchscreen device.");
 } else {
 	console.log("This is a touchscreen device");
+}
+
+function goToTextField() {
+	document.querySelector('#virtual-textfield').focus();
 }
 
 var words = ["angular", "node", "handlebars", "express", "hapi", "backbone"]
